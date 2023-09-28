@@ -16,9 +16,7 @@ func Define(flow *faasflow.Workflow, context *faasflow.Context) (err error) {
 	// 	},
 	// }
 
-	myOps := faasflow.Query("string1", "value1")
-
-	flow.SyncNode().Apply("func1").Apply("func2", myOps).
+	flow.SyncNode().Apply("func1").Apply("func2").
 		Modify(func(data []byte) ([]byte, error) {
 			data = []byte(string(data) + "modifier")
 			return data, nil
