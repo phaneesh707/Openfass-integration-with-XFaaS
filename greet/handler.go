@@ -6,21 +6,8 @@ import (
 
 // Define provide definition of the workflow
 func Define(flow *faasflow.Workflow, context *faasflow.Context) (err error) {
-	// myOptions := faasflow.Options{
-	// 	header: map[string]string{
-	// 		"Content-Type": "application/json",
-	// 	},
-	// 	query: map[string][]string{
-	// 		"string1": {"value1"},
-	// 		"string2": {"value2"},
-	// 	},
-	// }
 
-	flow.SyncNode().Apply("func1").Apply("func2").
-		Modify(func(data []byte) ([]byte, error) {
-			data = []byte(string(data) + "modifier")
-			return data, nil
-		})
+	flow.SyncNode().Apply("func1").Apply("func2")
 	return
 }
 
